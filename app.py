@@ -6,7 +6,7 @@ st.title("Sarcastic Chat Bot")
 client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
 
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+    st.session_state["openai_model"] = st.secrets['MODEL_NAME']
 
 if "messages" not in st.session_state:
     st.session_state.messages = [{
@@ -23,8 +23,6 @@ if prompt := st.chat_input("What's app?"):
 
     with st.chat_message("User"):
         st.markdown(prompt)
-
-    print(st.session_state.messages)
 
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
